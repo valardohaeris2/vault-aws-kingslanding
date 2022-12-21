@@ -8,7 +8,7 @@ variable "tags" {
   type        = map(string)
   description = "(optional) A map containing tags to assign to all resources"
   default = {
-    "app" = "vault"
+    Name = "vault"
   }
 }
 

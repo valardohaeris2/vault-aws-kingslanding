@@ -11,16 +11,16 @@ terraform {
   }
 
   cloud {
-    organization = "hc-implementation-services"
+    organization = "ashleyconner"
 
     workspaces {
-      name = "accelerator-aws-vault"
+      name = "vault-aws-kingslanding"
     }
   }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "us-east-2"
 }
 
 provider "tls" {}

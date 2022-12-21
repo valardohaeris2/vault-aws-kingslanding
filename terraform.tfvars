@@ -24,20 +24,20 @@ auto_join_tag = { #(optional) A map containing a single tag which will be used b
 }
 
 tags = { #(optional) A map containing tags to assign to all resources
-  "key" = "kingslanding"
+  Name = "kingslanding"
 }
 
 # Keys, Certificates, Key Pairs
 aws_kms_key_id   = "abccc794-f0c6-4968-bf1e-43ea9cec3a47" #(optional) The KMS key ID to use for Vault auto-unseal
 aws_kms_region   = "us-east-2"                            #(optional) The region the KMS is in. Leave null if in the same region as everything else
-#machine_key_pair = "aconner-vault"                        #(optional) The machine SSH key pair name to use for the cluster nodes
+machine_key_pair = "kingslanding-key"                        #(optional) The machine SSH key pair name to use for the cluster nodes
 
 # Persistent Storage 
 
 
 # IAM
 iam_role_path                     = "/" #(optional) Path for IAM entities
-iam_role_permissions_boundary_arn = "arn:aws:iam::641977889341:role/kings-landing-role"                       #(optional) The ARN of the policy that is used to set the permissions boundary for the role
+iam_role_permissions_boundary_arn = ""                       #(optional) The ARN of the policy that is used to set the permissions boundary for the role
 
 # ACL
 security_group_ids = ["sg-02497045d4b9cc3d4"] #(optional) List of security group IDs to be used by the auto scaling group
