@@ -12,7 +12,7 @@ module "accelerator_aws_vault" {
   vault_ca_bundle_secret      = "arn:aws:secretsmanager:us-east-2:641977889341:secret:kingslanding_ca_bundle-wjS44N"
   vault_signed_cert_secret    = "arn:aws:secretsmanager:us-east-2:641977889341:secret:kingslanding_signed_certificate-FQgpzx"
   vault_private_key_secret    = "arn:aws:secretsmanager:us-east-2:641977889341:secret:kingslanding_certificate_private_key-5segfb"
-  machine_key_pair            = "kingslanding-key"
+  machine_key_pair            = "us-east-2"
   aws_kms_key_id              = "abccc794-f0c6-4968-bf1e-43ea9cec3a47"
   vault_leader_tls_servername = "aconner-vault.com"
   ingress_ssh_cidr_blocks     = ["0.0.0.0/0"]
