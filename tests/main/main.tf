@@ -18,7 +18,7 @@ module "accelerator_aws_vault" {
   ingress_ssh_cidr_blocks     = ["0.0.0.0/0"]
 }
 
-output "loadbalancer_ip" {
-  value       = module.accelerator_aws_vault.vault_load_balancer_name
-  description = "The load balancer DNS name."
-}
+#output "loadbalancer_ip" {
+#  value       = module.accelerator_aws_vault.vault_load_balancer_name
+#  description = "The load balancer DNS name."
+#}
