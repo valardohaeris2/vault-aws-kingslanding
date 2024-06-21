@@ -1,13 +1,13 @@
 #=======Required Variables 
-network                     = "vpc-00486c3ef62ee9f8d"                                                                             #(required) The VPC ID to host the cluster in
+network                     = ""                                                                             #(required) The VPC ID to host the cluster in
 region                      = "us-east-2"                                                                                         #(required) The AWS region to use
-subnetworks                 = ["subnet-00d93cf0ccbb3b5a6", "subnet-0ede1a4da20f1aa5a", "subnet-06ac77c8e9844e43f"]                #(required) The subnet IDs in the VPC to host the cluster in
-vault_ca_bundle_secret      = "arn:aws:secretsmanager:us-east-2:641977889341:secret:ca_bundle-HBLyiK"               #vault_ca_bundle_secret	(required) The ARN of the CA bundle secret in AWS Secrets Manager
+subnetworks                 = [""]                #(required) The subnet IDs in the VPC to host the cluster in
+vault_ca_bundle_secret      = ""               #vault_ca_bundle_secret	(required) The ARN of the CA bundle secret in AWS Secrets Manager
 vault_disable_mlock         = true                                                                                                #(optional) Disable the server from executing the mlock syscall
-vault_leader_tls_servername = "dev-vault.winterfell.com"                                                                                 #(optional) TLS servername to use when trying to connect to the Raft cluster with HTTPS
-vault_private_key_secret    = "arn:aws:secretsmanager:us-east-2:641977889341:secret:certificate_private_key-mvuCPO" #(required) The ARN of the signed certificate's private key secret in AWS Secrets Manager
-vault_signed_cert_secret    = "arn:aws:secretsmanager:us-east-2:641977889341:secret:signed_certificate-6ug8Nw"      #(required) The ARN of the signed certificate secret in AWS Secrets Manager
-packer_image                = "ami-041b32f089f3abdff"       #centos                                                                      #(optional) The packer image to use
+vault_leader_tls_servername = ""                                                                                 #(optional) TLS servername to use when trying to connect to the Raft cluster with HTTPS
+vault_private_key_secret    = "" #(required) The ARN of the signed certificate's private key secret in AWS Secrets Manager
+vault_signed_cert_secret    = ""      #(required) The ARN of the signed certificate secret in AWS Secrets Manager
+packer_image                = ""       #centos                                                                      #(optional) The packer image to use
 
 
 #=========Optional Variables 
@@ -28,7 +28,7 @@ tags = { #(optional) A map containing tags to assign to all resources
 }
 
 # Keys, Certificates, Key Pairs
-aws_kms_key_id   = "20eb274b-2c05-4a70-8965-dd00c3288ee6" #(optional) The KMS key ID to use for Vault auto-unseal
+aws_kms_key_id   = "" #(optional) The KMS key ID to use for Vault auto-unseal
 aws_kms_region   = "us-east-2"                            #(optional) The region the KMS is in. Leave null if in the same region as everything else
 machine_key_pair = "us-east-2"                        #(optional) The machine SSH key pair name to use for the cluster nodes
 
@@ -40,16 +40,16 @@ iam_role_path                     = "/" #(optional) Path for IAM entities
 iam_role_permissions_boundary_arn = ""                       #(optional) The ARN of the policy that is used to set the permissions boundary for the role
 
 # ACL
-security_group_ids = ["sg-0eb54f1713edf8878"] #(optional) List of security group IDs to be used by the auto scaling group
+security_group_ids = [""] #(optional) List of security group IDs to be used by the auto scaling group
 
 # Networking
-ingress_ssh_cidr_blocks   = ["192.168.0/16", "0.0.0.0/0"]                                                         #(optional) List of CIDR blocks to allow SSH access to Vault instances. Not used if security_group_ids is set
-ingress_vault_cidr_blocks = ["192.168.0/16", "0.0.0.0/0"]                                                         #(optional) List of CIDR blocks to allow API access to Vault. Not used if security_group_ids is set
-lb_subnetwork             = ["subnet-00d93cf0ccbb3b5a6", "subnet-0ede1a4da20f1aa5a", "subnet-06ac77c8e9844e43f"] #(optional) The subnet IDs in the Virtual network to host the load balancer in. Can be left blank if subnet IDs are the same as subnetworks
+ingress_ssh_cidr_blocks   = [""]                                                         #(optional) List of CIDR blocks to allow SSH access to Vault instances. Not used if security_group_ids is set
+ingress_vault_cidr_blocks = [""]                                                         #(optional) List of CIDR blocks to allow API access to Vault. Not used if security_group_ids is set
+lb_subnetwork             = [""] #(optional) The subnet IDs in the Virtual network to host the load balancer in. Can be left blank if subnet IDs are the same as subnetworks
 load_balancing_scheme     = "EXTERNAL"                                                                           #(optional) Type of load balancer to use (INTERNAL, EXTERNAL, or NONE)
 
 # OS Configuration
-ami_image          = "ami-041b32f089f3abdff" #(optional) The AMI of the image to use
+ami_image          = "" #(optional) The AMI of the image to use
 application_prefix = "kingslanding"            #(optional) The prefix to give to cloud entities (load-balancer name)
 skip_install_tools = false                   #(optional) Skips installing required packages (unzip, jq, wget)
 machine_type       = "t2.small"              #(optional) The machine type to use for the Vault nodes
@@ -83,10 +83,10 @@ vault_health_endpoints = {    #(optional) The status codes to return when queryi
   }
     
 vault_home_directory                     = "/etc/vault.d"                                                                                                 #(optional) The home directory for the Vault user
-vault_license_secret                     = "arn:aws:secretsmanager:us-east-2:641977889341:secret:vault_enterprise.hclic-wV9W6y" #(optional) The ARN of the license secret in AWS Secrets Manager
+vault_license_secret                     = "" #(optional) The ARN of the license secret in AWS Secrets Manager
 vault_seal_type                          = "awskms"                                                                                                #(optional) The seal type to use for Vault
 vault_systemd_directory                  = "/lib/systemd/system"                                                                                                 #(optional) The directory for the systemd unit
 vault_tls_disable_client_certs           = true                                                                                                   #(optional) Disable client authentication for the Vault listener
 vault_tls_require_and_verify_client_cert = false                                                                                                   #(optional) Require a client to present a client certificate that validates against system CAs
-vault_version                            = "1.12.0+ent"                                                                                                 #(optional) The version of Vault to use
+vault_version                            = "1.16.2+ent"                                                                                                 #(optional) The version of Vault to use
 
