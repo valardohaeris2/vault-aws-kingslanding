@@ -7,7 +7,7 @@ resource "aws_security_group" "vault_security_group" {
   description = "Security group to allow inbound SSH and Vault API connections"
   vpc_id      = var.network
   tags        = var.tags
-}
+} 
 
 resource "aws_security_group_rule" "allow_vault_api_communication" {
   count       = var.security_group_ids == null ? 1 : 0
