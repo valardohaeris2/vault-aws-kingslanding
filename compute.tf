@@ -4,7 +4,7 @@
 resource "aws_security_group" "vault_security_group" {
   count       = var.security_group_ids == null ? 1 : 0
   name        = format("%s-security-group", var.application_prefix)
-  description = "Security group to allow inbound SSH and Vault API connections"
+  description = "Security group to allow inbound SSH and Vault API connections" 
   vpc_id      = var.network
   tags        = var.tags
 } 
